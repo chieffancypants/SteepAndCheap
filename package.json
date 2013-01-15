@@ -1,0 +1,10 @@
+{
+  "name": "steep-and-cheap",
+  "description": "Grabs the latest deal from Steep and Cheap",
+  "author": "Wes Cruver <chieffancypants@gmail.com>",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "2.x"
+  },
+  "engine": "node >= 0.6.6"
+}
