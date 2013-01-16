@@ -2,12 +2,20 @@ var request = require('request'),
 	exec = require('child_process').exec,
 	fs = require('fs');
 
-var pollFrequency = 1 * 60 * 1000;
+var pollFrequency = 1 * 60 * 1000,
+	previousItem;
+
 
 var poll = function() {
 	request.get('http://www.steepandcheap.com/steepcheap/sac/jsdata.js', function(err, resp, body) {
 		if (resp.statusCode == 200) {
 			body = JSON.parse(body);
+			
+			if (body.currentItem.skuClass === previousItem) {
+				return;
+			}
+
+			previousItem = body.currentItem.skuClass;
 
 			for (image in body.currentItem.variants) break;
 			var image = body.currentItem.variants[image].images.smallImage;
