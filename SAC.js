@@ -27,7 +27,7 @@ var poll = function() {
 					' - ' + body.currentItem.price +
 					' (' + body.currentItem.percentOff +'% off)" -i ' + __dirname + '/data/image.jpg';
 					
-				console.log(message);
+				// console.log(message);
 				exec('notify-send ' + message, function (err, stdout, stderr) {
 					// console.log(err, stdout, stderr);
 				});
