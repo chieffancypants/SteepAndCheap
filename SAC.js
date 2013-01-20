@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var request = require('request'),
 	exec = require('child_process').exec,
 	fs = require('fs');
