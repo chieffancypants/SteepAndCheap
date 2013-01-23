@@ -22,7 +22,7 @@ var poll = function() {
 			// Grab the first image
 			for (image in body.currentItem.variants) break;
 			var image = body.currentItem.variants[image].images.smallImage;
-			var r = request(image).pipe(fs.createWriteStream('data/image.jpg'));
+			var r = request(image).pipe(fs.createWriteStream(__dirname + '/data/image.jpg'));
 			
 			// Once we're done saving the image, display the notification:
 			r.on('close', function() {
