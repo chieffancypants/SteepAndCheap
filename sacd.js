@@ -27,7 +27,7 @@ process.on('uncaughtException', function (err) {
 });
 
 var poll = function() {
-	request.get('http://www.steepandcheap2.com/steepcheap/sac/jsdata.js', function (err, resp, body) {
+	request.get('http://www.steepandcheap.com/steepcheap/sac/jsdata.js', function (err, resp, body) {
 		if (err) throw(err);
 
 		if (!err && resp.statusCode == 200) {			
