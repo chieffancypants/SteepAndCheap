@@ -1,18 +1,36 @@
 #!/usr/bin/env node
 
 var request = require('request'),
-	exec = require('child_process').exec,
-	fs = require('fs');
+	exec    = require('child_process').exec,
+	fs      = require('fs'),
+	util    = require('util')
 
 var pollFrequency = 1 * 60 * 1000,
 	previousItem;
 
 
+// set header information:
+request = request.defaults({
+	'json': true,
+	'headers': {
+		'User-Agent': 'SteepAndCheap Linux App (https://github.com/chieffancypants/SteepAndCheap)'
+	}
+});
+
+
+// Log any potential errors:
+process.__defineGetter__('stdout', function() {
+	return fs.createWriteStream(__dirname + '/logfile.log', {'flags': 'a'})
+});
+process.on('uncaughtException', function (err) {
+	util.log('Caught exception: ' + err.message);
+});
+
 var poll = function() {
-	request.get('http://www.steepandcheap.com/steepcheap/sac/jsdata.js', function(err, resp, body) {
-		if (!err && resp.statusCode == 200) {
-			body = JSON.parse(body);
-			
+	request.get('http://www.steepandcheap2.com/steepcheap/sac/jsdata.js', function (err, resp, body) {
+		if (err) throw(err);
+
+		if (!err && resp.statusCode == 200) {			
 			// Don't notify unless it's a new item
 			if (body.currentItem.skuClass === previousItem) {
 				return;
