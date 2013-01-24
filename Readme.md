@@ -24,7 +24,7 @@ $ npm install
 ## Running the program:
 
 ```
-$ node SAC.js
+$ node sacd.js
 ```
 
 ## License 
