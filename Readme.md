@@ -6,7 +6,7 @@ This is a tiny node.js app for SteepAndCheap.com notifications.  Uses notify-sen
 
 ## Installation
 
-- Install Node:
+- Install node.js (if you don't already have it):
 
 ```
 $ apt-get install nodejs npm
@@ -25,6 +25,11 @@ $ npm install
 
 ```
 $ node sacd.js
+```
+or simply:
+
+```
+$ ./sacd.js
 ```
 
 ## License 
