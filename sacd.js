@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var request = require('request'),
-    exec    = require('child_process').exec,
-    fs      = require('fs'),
-    util    = require('util');
+var request  = require('request'),
+    execFile = require('child_process').execFile,
+    fs       = require('fs'),
+    util     = require('util');
 
 var previousItem,
   pollFrequency = 1 * 60 * 1000,
@@ -44,10 +44,10 @@ var poll = function() {
 
       // Once we're done saving the image, display the notification:
       r.on('close', function() {
-        var message = 'SteepAndCheap "' + body.currentItem.productTitle +
+        var message = body.currentItem.productTitle +
           ' - ' + body.currentItem.price +
-          ' (' + body.currentItem.percentOff +'% off)" -i ' + __dirname + '/data/image.jpg';
-        exec('notify-send ' + message, function (err, stdout, stderr) {
+          ' (' + body.currentItem.percentOff +'% off)';
+        execFile('notify-send', ['SteepAndCheap', message, '-i', __dirname + '/data/image.jpg'], function (err, stdout, stderr) {
           // console.log(err, stdout, stderr);
         });
       });
