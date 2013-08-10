@@ -4,7 +4,8 @@
   "author": "Wes Cruver <chieffancypants@gmail.com>",
   "version": "0.0.1",
   "dependencies": {
-    "request": "2.x"
+    "request": "2.x",
+    "growl": "~1.7.0"
   },
   "engine": "node >= 0.6.6"
 }

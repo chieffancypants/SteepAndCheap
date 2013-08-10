@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var request  = require('request'),
-    execFile = require('child_process').execFile,
     fs       = require('fs'),
+    growl    = require('growl'),
     util     = require('util');
 
 var previousItem,
@@ -47,11 +47,8 @@ var poll = function() {
         var message = body.currentItem.productTitle +
           ' - ' + body.currentItem.price +
           ' (' + body.currentItem.percentOff +'% off)';
-        execFile('notify-send', ['SteepAndCheap', message, '-i', __dirname + '/data/image.jpg'], function (err, stdout, stderr) {
-          // console.log(err, stdout, stderr);
-        });
+        growl(message, {title: 'SteepAndCheap', image: __dirname + '/data/image.jpg'});
       });
-
     }
   });
 };

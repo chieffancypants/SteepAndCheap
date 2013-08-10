@@ -1,18 +1,31 @@
 
 # SteepAndCheap.com Notifications
 
-This is a tiny node.js app for SteepAndCheap.com notifications.  Uses notify-send to display the alerts.
+This is a tiny node.js app for SteepAndCheap.com notifications.  When using Mac or PC, it uses Growl, when using Linux, it uses notify-send (libnotify) to display the alerts.
+
+
+## Requirements:
+
+- Node.js (obviously)
+
+#### Mac OS X:
+- install [growlnotify(1)](http://growl.info/extras.php#growlnotify). On OS X 10.8, [Notification Center](https://github.com/alloy/terminal-notifier) is supported using terminal-notifier. To install:
+
+     $ sudo gem install terminal-notifier
+
+#### Windows:
+- Download and install [Growl for Windows](http://www.growlforwindows.com/gfw/default.aspx)
+- Download [growlnotify](http://www.growlforwindows.com/gfw/help/growlnotify.aspx) - IMPORTANT : Unpack growlnotify to a folder that is present in your path!
+
+#### Linux (Ubuntu):
+This should just work out of the box.  If for some reason you don't have libnotify, install it:
+
+     $ sudo apt-get install libnotify-bin
 
 
 ## Installation
 
-- Install node.js (if you don't already have it):
-
-```
-$ apt-get install nodejs npm
-```
-
-- Download this program:
+Download this app:
 
 ```
 $ wget https://github.com/chieffancypants/SteepAndCheap/archive/master.zip
@@ -32,7 +45,7 @@ or simply:
 $ ./sacd.js
 ```
 
-## License 
+## License
 
 (The MIT License)
 
